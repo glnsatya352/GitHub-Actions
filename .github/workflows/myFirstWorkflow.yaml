@@ -1,0 +1,11 @@
+name: MyFirstWorkFlow
+on:
+  schedule:
+    - cron: '*/5 * * * *' 
+jobs:
+  name: Demo
+  runs-on: windows-latest
+  steps:
+    - name: windowsone
+      shell: pwsh
+      run: get-computerinfo
