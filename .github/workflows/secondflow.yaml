@@ -1,0 +1,11 @@
+name: mysecondworkflow
+on: push
+jobs:
+  job1:
+    name: job1
+    runs-on: windows-latest
+    steps:
+    - name: windowstwo
+      shell: pwsh
+      run: get-computerinfo
+  
