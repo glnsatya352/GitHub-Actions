@@ -7,6 +7,6 @@ jobs:
   demo:
     runs-on: windows-latest
     steps:
-    - name: windowsone
+    - name: windowstwo
       shell: pwsh
       run: get-computerinfo
