@@ -1,0 +1,11 @@
+name: githubaction
+on: 
+    push:
+jobs:
+    job1:
+        name: job1
+        runs-on: windows-latest
+        steps:
+            - name: step1
+            shell: pwsh
+            run: get-computerinfo
