@@ -18,5 +18,18 @@ jobs:
                pwd
                ls -ltr
                hostname
-            
-            
+    job2:
+        name: job2
+        runs-on: ubuntu-latest
+        needs: job1
+        steps:
+            - name: createfile
+              run: |
+                  echo 'pwd' >> test.txt
+                  ls -lrt
+                  hostname
+            - name: uploading single file
+              uses: actions/upload-artifact@v7.0.1
+              with:
+                name: single_file
+                path: ./test.txt
