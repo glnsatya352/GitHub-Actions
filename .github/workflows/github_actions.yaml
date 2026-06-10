@@ -25,10 +25,10 @@ jobs:
         steps:
             - name: createfile
               run: |
-                  echo 'pwd' >> test.txt
+                  echo $(pwd )>> test.txt
                   mkdir artifacts
-                  echo 'ls -lrt' >> artifacts/list.txt
-                  echo 'hostname' >> artifacts/hostname.txt
+                  echo $(ls -lrt) >> artifacts/list.txt
+                  echo $(hostname) >> artifacts/hostname.txt
             - name: uploading single file
               uses: actions/upload-artifact@v7.0.1
               with:
