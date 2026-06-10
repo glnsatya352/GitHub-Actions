@@ -26,10 +26,16 @@ jobs:
             - name: createfile
               run: |
                   echo 'pwd' >> test.txt
-                  ls -lrt
-                  hostname
+                  mkdir artifacts
+                  echo 'ls -lrt' >> artifacts/list.txt
+                  echo 'hostname' >> artifacts/hostname.txt
             - name: uploading single file
               uses: actions/upload-artifact@v7.0.1
               with:
                 name: single_file
                 path: ./test.txt
+            - name: uploading from directory
+              uses: actions/upload-artifact@v7.0.1
+              with:
+                name: directory_artifacts
+                path: artifacts/
