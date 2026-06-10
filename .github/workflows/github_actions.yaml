@@ -52,5 +52,5 @@ jobs:
         - name: downloadartifacts
           uses: actions/download-artifact@v4
           with:
-              name: download artifacts
-              path: ./artifacts/
+              name: directory_artifacts
+              path: artifacts/
