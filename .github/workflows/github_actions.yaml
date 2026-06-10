@@ -53,4 +53,4 @@ jobs:
           uses: actions/download-artifact@v8.0.1
           with:
               name: download artifacts
-              path: artifacts/
+              path: ./artifacts/
