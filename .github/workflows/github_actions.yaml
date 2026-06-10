@@ -7,4 +7,16 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: step1
-              run: pwd
+              run: |
+                  pwd
+                  ls -lrt 
+                  hostname
+            - name: Checkout
+              uses: actions/checkout@v6.0.3
+            - name: step3
+              run: |
+               pwd
+               ls -ltr
+               hostname
+            
+            
