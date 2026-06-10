@@ -54,3 +54,7 @@ jobs:
           with:
               name: directory_artifacts
               path: artifacts/
+        - name: showfile
+          run: |
+            cat artifacts/list.txt
+            cat artifacts/hostname.txt
