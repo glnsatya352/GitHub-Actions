@@ -4,8 +4,7 @@ on:
 jobs:
     job1:
         name: job1
-        runs-on: windows-latest
+        runs-on: ubuntu-latest
         steps:
             - name: step1
-            shell: pwsh
-            run: get-computerinfo
+            run: pwd
