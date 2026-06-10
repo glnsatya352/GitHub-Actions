@@ -51,4 +51,7 @@ jobs:
           with:
               name: download artifacts
               path: artifacts/
+        - name: directorylocation
+          run: |
+           pwd
         
