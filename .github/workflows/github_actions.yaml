@@ -9,3 +9,5 @@ jobs:
             - name: step1
             shell: pwsh
             run: get-computerinfo
+            - name: checkout
+            
