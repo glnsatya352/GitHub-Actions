@@ -37,4 +37,11 @@ jobs:
               run: echo "[INFO] running deployment for $APP_NAME by $APP_User WITH PORT $APP_PORT"
             - name: sec_variables
               run: echo "[INFO] application password is ${{ secrets.APP_PASSWORD }}"
-              
+            - name: context_variables
+              run: |
+               echo "[INFO] application password is ${{ github.repository }}"
+               echo "[INFO] application password is ${{ github.event_name }}"
+               echo "[INFO] application password is ${{ github.api_url }}"   
+               echo "[INFO] application password is ${{ github.actor }} by ${{ github.ref_name }}" 
+               echo "[INFO] application password is ${{ job.check_run_id}}" 
+               
