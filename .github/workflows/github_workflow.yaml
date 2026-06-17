@@ -3,6 +3,9 @@ on:
     push:
         branches: 
          - main
+    pull_request:
+      branches:
+        - main
 jobs:
     job1:
         name: job1
@@ -20,3 +23,5 @@ jobs:
                pwd
                ls -ltr
                hostname
+            - name: step for PR
+              run: exit 0
