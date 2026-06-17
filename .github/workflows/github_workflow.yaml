@@ -6,6 +6,10 @@ on:
     pull_request:
       branches:
         - main
+env:
+  APP_NAME: staging
+  APP_User: satya
+  APP_PORT: 8081
 jobs:
     job1:
         name: job1
@@ -25,3 +29,9 @@ jobs:
                hostname
             - name: step for PR
               run: exit 0
+    job2:
+        name: job2
+        runs-on: ubuntu-latest
+        steps:
+            - name: env_variables
+              run: echo "[INFO] running deployment for $APP_NAME by $APP_USER WITH PORT $APP_PORT
