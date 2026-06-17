@@ -34,4 +34,4 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: env_variables
-              run: echo "[INFO] running deployment for $APP_NAME by $APP_USER WITH PORT $APP_PORT
+              run: echo "[INFO] running deployment for $APP_NAME by $APP_USER WITH PORT $APP_PORT"
