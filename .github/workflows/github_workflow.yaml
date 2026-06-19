@@ -42,7 +42,7 @@ jobs:
                echo "[INFO] application repository is ${{ github.repository }}"
                echo "[INFO] application event_name is ${{ github.event_name }}"
                echo "[INFO] application api_url is ${{ github.api_url }}"   
-               echo "[INFO] application actor and ref_name is ${{ github.actor }} by ${{ github.ref_name }}" 
+               echo "[INFO] application actor and ref_name is ${{ github.actor }} by ${{ github.head_ref }}" 
                echo "[INFO] application check_run_id is ${{ job.check_run_id}}" 
     staging:
         name: staging_env
@@ -55,7 +55,7 @@ jobs:
                 echo "[INFO] environment user ${{ vars.USER }}"
         environment:
           name: STAGOMG
-        if: github.head_ref=='Dev'
+        if: github.head_ref == 'Dev'
     production:
         name: prod_env
         runs-on: ubuntu-latest
@@ -67,4 +67,4 @@ jobs:
                 echo "[INFO] environment user ${{ vars.USER }}"
         environment:
           name: STAGOMG
-        if: github.head_ref=='Prod'
+        if: github.head_ref == 'Prod'
