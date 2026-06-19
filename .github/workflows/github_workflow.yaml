@@ -66,5 +66,5 @@ jobs:
                 echo "[INFO] environment Host ${{ vars.HOST }}"
                 echo "[INFO] environment user ${{ vars.USER }}"
         environment:
-          name: STAGOMG
-        if: github.event_name == 'pull_request' && github.head_ref == 'Prod'
+          name: Prod
+        if: github.event_name == 'pull_request' && github.head_ref == 'main'
