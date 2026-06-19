@@ -39,9 +39,32 @@ jobs:
               run: echo "[INFO] application password is ${{ secrets.APP_PASSWORD }}"
             - name: context_variables
               run: |
-               echo "[INFO] application password is ${{ github.repository }}"
-               echo "[INFO] application password is ${{ github.event_name }}"
-               echo "[INFO] application password is ${{ github.api_url }}"   
-               echo "[INFO] application password is ${{ github.actor }} by ${{ github.ref_name }}" 
-               echo "[INFO] application password is ${{ job.check_run_id}}" 
-               
+               echo "[INFO] application repository is ${{ github.repository }}"
+               echo "[INFO] application event_name is ${{ github.event_name }}"
+               echo "[INFO] application api_url is ${{ github.api_url }}"   
+               echo "[INFO] application actor and ref_name is ${{ github.actor }} by ${{ github.ref_name }}" 
+               echo "[INFO] application check_run_id is ${{ job.check_run_id}}" 
+    staging:
+        name: staging_env
+        runs-on: ubuntu-latest
+        steps:
+            - name: stagingenv
+              run: |
+                echo "[INFO] environment password ${{ secrets.MY_PASSWORD }}"
+                echo "[INFO] environment Host ${{ vars.HOST }}"
+                echo "[INFO] environment user ${{ vars.USER }}"
+        environment:
+          name: STAGOMG
+        if: github.head_ref='Dev'
+  production:
+        name: prod_env
+        runs-on: ubuntu-latest
+        steps:
+            - name: prodenv
+              run: |
+                echo "[INFO] environment password ${{ secrets.MY_PROD_SEC }}"
+                echo "[INFO] environment Host ${{ vars.HOST }}"
+                echo "[INFO] environment user ${{ vars.USER }}"
+        environment:
+          name: STAGOMG
+        if: github.head_ref='Prod'
