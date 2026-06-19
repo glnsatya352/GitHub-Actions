@@ -55,7 +55,7 @@ jobs:
                 echo "[INFO] environment user ${{ vars.USER }}"
         environment:
           name: STAGOMG
-        if: github.head_ref == 'Dev'
+     #   if: github.head_ref == 'Dev'
     production:
         name: prod_env
         runs-on: ubuntu-latest
@@ -67,4 +67,4 @@ jobs:
                 echo "[INFO] environment user ${{ vars.USER }}"
         environment:
           name: STAGOMG
-        if: github.head_ref == 'Prod'
+      #  if: github.head_ref == 'Prod'
