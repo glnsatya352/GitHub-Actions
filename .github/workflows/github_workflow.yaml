@@ -67,4 +67,4 @@ jobs:
                 echo "[INFO] environment user ${{ vars.USER }}"
         environment:
           name: Prod
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.head_ref == 'main'
