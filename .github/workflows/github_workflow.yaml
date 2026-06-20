@@ -6,65 +6,30 @@ on:
     pull_request:
       branches:
         - main
-env:
-  APP_NAME: staging
-  APP_User: satya
-  APP_PORT: 8081
 jobs:
-    job1:
-        name: job1
+    unit-tests:
+        name: running unit test
         runs-on: ubuntu-latest
         steps:
-            - name: step1
-              run: |
-                  pwd
-                  ls -lrt 
-                  hostname
-            - name: Checkout
-              uses: actions/checkout@v6.0.3
-            - name: step3
-              run: |
-               pwd
-               ls -ltr
-               hostname
-            - name: step for PR
-              run: exit 0
-    job2:
-        name: job2
-        runs-on: ubuntu-latest
-        steps:
-            - name: env_variables
-              run: echo "[INFO] running deployment for $APP_NAME by $APP_User WITH PORT $APP_PORT"
-            - name: sec_variables
-              run: echo "[INFO] application password is ${{ secrets.APP_PASSWORD }}"
-            - name: context_variables
-              run: |
-               echo "[INFO] application repository is ${{ github.repository }}"
-               echo "[INFO] application event_name is ${{ github.event_name }}"
-               echo "[INFO] application api_url is ${{ github.api_url }}"   
-               echo "[INFO] application actor and ref_name is ${{ github.actor }} by ${{ github.head_ref }}" 
-               echo "[INFO] application check_run_id is ${{ job.check_run_id}}" 
-    staging:
-        name: staging_env
-        runs-on: ubuntu-latest
-        steps:
-            - name: stagingenv
-              run: |
-                echo "[INFO] environment password ${{ secrets.MY_PASSWORD }}"
-                echo "[INFO] environment Host ${{ vars.HOST }}"
-                echo "[INFO] environment user ${{ vars.USER }}"
-        environment:
-          name: STAGOMG
-        if: github.event_name == 'pull_request' && github.head_ref == 'Dev'
-    production:
-        name: prod_env
-        runs-on: ubuntu-latest
-        steps:
-            - name: prodenv
-              run: |
-                echo "[INFO] environment password ${{ secrets.MY_PROD_SEC }}"
-                echo "[INFO] environment Host ${{ vars.HOST }}"
-                echo "[INFO] environment user ${{ vars.USER }}"
-        environment:
-          name: Prod
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+         - name: Checkout Code
+           uses: actions/checkout@v7
+         - name: Setup System
+           uses: actions/setup-python@v6.2.0
+           with:
+               python-version: '3.10'
+         - name: install Dependencies
+           run: |
+               python -m pip install --upgrade pip
+               pip install -r requirements.txt
+         - name: Run Unit Tests
+           run: |
+            mkdir reports/
+            pytest --junitxml=reports/unit-test-results.xml --cov=. --cov-report=xml --cov-report=term-missing -v
+         - name: Upload Code Coverage Report
+           uses: actions/upload-artifact@v7
+           with:
+            name: unit-test-report
+            path: reports/
+
+
+         
