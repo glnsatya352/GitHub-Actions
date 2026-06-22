@@ -60,7 +60,7 @@ jobs:
           with:
             fetch-depth: 0  # ssShallow clones should be disabled for a better relevancy of analysis
         - name: Download Coverage Report
-          uses: actions/download-artifact@v4
+          uses: actions/download-artifact@v5
           with:
             name:  unit-test-report
             path: reports/
