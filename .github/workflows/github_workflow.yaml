@@ -89,7 +89,7 @@ jobs:
           id: vars
           run: |
             SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
-            IMAGE_TAGS="${{ github.run_id }} - ${SHORT_SHA}"
+            IMAGE_TAGS="${{ github.run_id }}"
         - name: debuging
           run: | 
             echo "image id ${SHORT_SHA}"
