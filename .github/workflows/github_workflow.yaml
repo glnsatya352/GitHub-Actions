@@ -101,7 +101,8 @@ jobs:
             context:
             file: ./Dockerfile
             push: false
-            tags: gunisatya:${{ steps.vars.outputs.IMAGE_TAGS }}
+            #tags: gunisatya:${{ steps.vars.outputs.IMAGE_TAGS }}
+            tags: gunisatya:${{ github.run_id }}
         - name: Save Docker Image
           run: dcoker save gunisatya_app:${{steps.vars.outputs.IMAGE_TAGS}} -0 gunisatya_app.tar
         - name: Upload Docker Image Artifact
