@@ -90,6 +90,9 @@ jobs:
           run: |
             SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
             IMAGE_TAGS="${{ github.run_id }}-${SHORT_SHA}"
+        - name: debuging
+          run: | 
+            echo "image id ${{ steps.vars.outputs.IMAGE_TAGS }}"
         - name: Build Image (no push)
           uses: docker/build-push-action@v5.0.0
           with:
