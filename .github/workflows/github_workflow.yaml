@@ -102,7 +102,7 @@ jobs:
             context:
             file: ./Dockerfile
             push: false
-            #load: true
+            load: true
             tags: gunisatya_app:${{ steps.vars.outputs.IMAGE_TAGS }}
             #tags: gunisatya:${{ github.run_id }}
         - name: Save Docker Image
