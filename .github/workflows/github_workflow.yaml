@@ -106,7 +106,7 @@ jobs:
             tags: gunisatya_app:${{ steps.vars.outputs.IMAGE_TAGS }}
             #tags: gunisatya:${{ github.run_id }}
         - name: Save Docker Image
-          run: dcoker save gunisatya_app:${{steps.vars.outputs.IMAGE_TAGS}} -o gunisatya_app.tar
+          run: docker save gunisatya_app:${{ steps.vars.outputs.IMAGE_TAGS }} -o gunisatya_app.tar
         - name: Upload Docker Image Artifact
           uses: actions/upload-artifact@v5.0.0
           with:
