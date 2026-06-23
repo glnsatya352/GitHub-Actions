@@ -93,7 +93,7 @@ jobs:
         - name: debuging
           run: | 
             echo "image id ${SHORT_SHA}"
-            echo "image id ${{github.run_id}}"
+            echo "run id ${{github.run_id}}"
 
         - name: Build Image (no push)
           uses: docker/build-push-action@v5.0.0
