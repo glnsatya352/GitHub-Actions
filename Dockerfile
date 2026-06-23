@@ -9,11 +9,11 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 # Environment variables for Flask (optional but useful)
 ENV FLASK_ENV=production \
-    PYTHONPATH=/app
+ENV PYTHONPATH=/app
 
 # Install minimal build tools (for any dependencies needing compilation)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential gcc \
+    build-essential gcc curl \
  && rm -rf /var/lib/apt/lists/*
 
 # Copy dependency list first for caching
@@ -33,6 +33,9 @@ USER appuser
 
 # Expose Flask port
 EXPOSE 8000
+# Verify the app is responding
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000/ || exit 1
 
 # Use Gunicorn for production serving
 # Replace `app:app` with your Flask instance path if different
