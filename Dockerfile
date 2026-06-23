@@ -9,7 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 # Environment variables for Flask (optional but useful)
 ENV FLASK_ENV=production \
-ENV PYTHONPATH=/app
+    PYTHONPATH=/app
 
 # Install minimal build tools (for any dependencies needing compilation)
 RUN apt-get update && apt-get install -y --no-install-recommends \
