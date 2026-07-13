@@ -125,8 +125,8 @@ jobs:
             uses: 'google-github-actions/auth@v3'
             with:
              project_id: 'my-project'
-             workload_identity_provider: 'projects/130184213177/locations/global/workloadIdentityPools/transation-wpl/providers/github'
-             service_account: 'github-wif@project-8253f045-17e3-4a6a-869.iam.gserviceaccount.com'
+             workload_identity_provider: 'projects/130184213177/locations/global/workloadIdentityPools/paymentsys-pool/providers/github-payment'
+             service_account: 'paymentsys-sa@project-8253f045-17e3-4a6a-869.iam.gserviceaccount.com'
           - name: setup gcloud
             uses: google-github-actions/setup-gcloud@v2
           - name: verify access
