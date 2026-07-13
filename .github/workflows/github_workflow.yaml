@@ -112,3 +112,24 @@ jobs:
           with:
             name: gunisatya_app_image
             path: gunisatya_app.tar
+    gcp-wif:
+        name: running unit test
+        runs-on: ubuntu-latest
+        permissions:
+          id-token: write
+          contents: read
+        steps:
+          - name: checkoutgcp
+            uses: actions/checkout@v4
+          - name: Authenticate to GCP using WIF
+            uses: 'google-github-actions/auth@v3'
+            with:
+             project_id: 'my-project'
+             workload_identity_provider: 'projects/130184213177/locations/global/workloadIdentityPools/transation-wpl/providers/github'
+             service_account: 'github-wif@project-8253f045-17e3-4a6a-869.iam.gserviceaccount.com'
+          - name: setup gcloud
+            uses: google-github-actions/setup-gcloud@v2
+          - name: verify access
+            run: |
+             gcloud auth list
+             gcloud projects list
