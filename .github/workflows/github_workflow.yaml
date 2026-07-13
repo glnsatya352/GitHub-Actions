@@ -113,7 +113,7 @@ jobs:
             name: gunisatya_app_image
             path: gunisatya_app.tar
     gcp-wif:
-        name: running unit test
+        name: running GCP Pipeline
         runs-on: ubuntu-latest
         permissions:
           id-token: write
